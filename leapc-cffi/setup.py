@@ -37,7 +37,7 @@ _OS_SHARED_OBJECT = {
     "Windows": "LeapC.dll",
     "Linux": "libLeapC.so",
     "Linux-ARM": "libLeapC.so",
-    "Darwin": "libLeapC.5.dylib",
+    "Darwin": "libLeapC.6.dylib",
 }
 
 
