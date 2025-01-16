@@ -108,6 +108,33 @@ class Canvas:
                             cv2.line(self.output_image, bone_start, wrist, self.hands_colour, 2)
 
 
+            target_points = [None for i in range(11)]
+            target_points[0] = hand.palm.position
+            target_points[1] = hand.thumb.bones[1].next_joint
+            target_points[2] = hand.thumb.bones[-1].next_joint
+            target_points[3] = hand.index.bones[0].next_joint
+            target_points[4] = hand.index.bones[-1].next_joint
+            target_points[5] = hand.middle.bones[0].next_joint
+            target_points[6] = hand.middle.bones[-1].next_joint
+            target_points[7] = hand.ring.bones[0].next_joint
+            target_points[8] = hand.ring.bones[-1].next_joint
+            target_points[9] = hand.pinky.bones[0].next_joint
+            target_points[10] = hand.pinky.bones[-1].next_joint
+            for i in range(11):
+                target_points[i] = self.get_joint_position(target_points[i])
+
+            cv2.circle(self.output_image, target_points[0], 2, (255, 0, 0), -1)
+            cv2.circle(self.output_image, target_points[1], 2, (255, 255, 0), -1)
+            cv2.circle(self.output_image, target_points[2], 2, (255, 0, 255), -1)
+            cv2.circle(self.output_image, target_points[3], 2, (255, 255, 0), -1)
+            cv2.circle(self.output_image, target_points[4], 2, (255, 0, 255), -1)
+            cv2.circle(self.output_image, target_points[5], 2, (255, 255, 0), -1)
+            cv2.circle(self.output_image, target_points[6], 2, (255, 0, 255), -1)
+            cv2.circle(self.output_image, target_points[7], 2, (255, 255, 0), -1)
+            cv2.circle(self.output_image, target_points[8], 2, (255, 0, 255), -1)
+            cv2.circle(self.output_image, target_points[9], 2, (255, 255, 0), -1)
+            cv2.circle(self.output_image, target_points[10], 2, (255, 0, 255), -1)
+
 class TrackingListener(leap.Listener):
     def __init__(self, canvas):
         self.canvas = canvas
